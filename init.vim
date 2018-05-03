@@ -32,6 +32,10 @@ Plug 'dhruvasagar/vim-table-mode'
 "Fancy status line
 Plug 'vim-airline/vim-airline'
 
+"Snippets
+Plug 'Shougo/neosnippet.vim'
+
+
 call plug#end()
 
 "Enable line numbers
