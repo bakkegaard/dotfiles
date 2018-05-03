@@ -118,3 +118,21 @@ let g:table_mode_corner='|'
 
 "Show substitue command incremential
 set inccommand=nosplit
+
+"Make Neovim detect tex files correctly
+let g:tex_flavor = 'tex'
+
+" Make <leader>m compile latex file
+autocmd FileType tex noremap <leader>m :call CompileMagic()<CR>
+
+"The above command compiles with the current file name, unless masterfile
+"variable is set using 
+"    :let masterfile="somefile.tex"
+"Then it will compile with that instead
+function CompileMagic()
+	if exists("g:masterfile")
+		execute "!latexmk -pdf -pdflatex=\"pdflatex\" " . g:masterfile
+	else
+		execute "!latexmk -pdf -pdflatex=\"pdflatex\" ". expand('%:t') 
+	endif
+endfunction
